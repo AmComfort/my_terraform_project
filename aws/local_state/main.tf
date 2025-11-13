@@ -10,7 +10,7 @@ terraform {
 }
 
 provider "aws" {
-  region  = "us-west-2"
+  region  = "us-west-1"
 }
 
 resource "aws_instance" "app_server" {
@@ -19,6 +19,14 @@ resource "aws_instance" "app_server" {
 
   tags = {
     Name = "Terraform_Demo"
+  }
+}
+resource "aws_s3_bucket" "example" {
+  bucket = "my-tf-test-bucket"
+
+  tags = {
+    Name        = "My bucket"
+    Environment = "Dev"
   }
 }
 
